@@ -6,19 +6,21 @@ import './App.css'
 function App() {
   const [filtered, setFiltered] = useState([])
 
+  // ----------------------------------
+
   //filters selected roles
   const filterRoles = data.filter(listing => {
     const findWord = filtered.find(checker => checker === listing.role)
     if(findWord) {return true}
   })
-  console.log(filterRoles)
+  // console.log(filterRoles)
 
   //filters selected level
   const filterLevel = data.filter(listing => {
     const findWord = filtered.find(checker => checker === listing.level)
     if(findWord) {return true}
   })
-  console.log(filterLevel)
+  // console.log(filterLevel)
 
   //filters selected languages
   //needs to be worked on
@@ -28,7 +30,16 @@ function App() {
       if(findWord) {return true}
     }
   })
-  console.log(filterLanguages)
+  // console.log(filterLanguages)
+
+  //concat all 3 arrays
+  const concatFilteredData = [...filterRoles, ...filterLevel, ...filterLanguages]
+  console.log(concatFilteredData)
+
+  //eliminate douplicates
+  const 
+
+// ---------------------------------------
 
   function toFilter(e) {
     console.log( e.target.innerHTML + " clicked")
