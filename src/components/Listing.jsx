@@ -4,8 +4,8 @@ import './Listing.css'
 
 function Listing(props) {
 
-    const languagesBtn = (props.languages).map(lang => <Button name={lang} btn={props.btn} />)
-    const toolsBtn = (props.tools).map(tool => <Button name={tool} btn={props.btn} />)
+    const languagesBtn = (props.languages).map(lang => <Button name={lang} toggleBtn={props.toggleBtn} />)
+    const toolsBtn = (props.tools).map(tool => <Button name={tool} toggleBtn={props.toggleBtn} />)
 
     return (
         <div className='job-listing'>
@@ -21,8 +21,8 @@ function Listing(props) {
             <p className='fine-print'>{props.postedAt} - {props.contract} - {props.location}</p>
             <hr />
             <div>
-                <Button name={props.role} btn={props.btn} />
-                <Button name={props.level} btn={props.btn} />
+                <Button name={props.role} toggleBtn={props.toggleBtn} />
+                <Button name={props.level} toggleBtn={props.toggleBtn} />
                 {languagesBtn}
                 {toolsBtn}
             </div>

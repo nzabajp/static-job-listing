@@ -6,14 +6,38 @@ import './App.css'
 function App() {
   const [filtered, setFiltered] = useState([])
 
+  //filters selected roles
+  const filterRoles = data.filter(listing => {
+    const findWord = filtered.find(checker => checker === listing.role)
+    if(findWord) {return true}
+  })
+  console.log(filterRoles)
+
+  //filters selected level
+  const filterLevel = data.filter(listing => {
+    const findWord = filtered.find(checker => checker === listing.level)
+    if(findWord) {return true}
+  })
+  console.log(filterLevel)
+
+  //filters selected languages
+  //needs to be worked on
+  const filterLanguages = data.filter(listing => {
+    for(let checker of listing.languages) {
+      const findWord = filtered.find(word => word === checker)
+      if(findWord) {return true}
+    }
+  })
+  console.log(filterLanguages)
+
   function toFilter(e) {
     console.log( e.target.innerHTML + " clicked")
     const wordBtn = e.target.innerHTML
     const findWord = filtered.find(word => word === wordBtn)
     if(!findWord) {
-      setFiltered(prevFilter => [...prevFilter, wordBtn])
+      setFiltered(prevFiltered => [...prevFiltered, wordBtn])
     } else {
-      setFiltered(prevFilter => prevFilter.filter(word => word !== wordBtn))
+      setFiltered(prevFiltered => prevFiltered.filter(word => word !== wordBtn))
     }
     console.log(filtered)
   }
@@ -35,7 +59,7 @@ function App() {
         level={listing.level}
         languages={listing.languages}
         tools={listing.tools}
-        btn={toFilter}
+        toggleBtn={toFilter}
       />)
   })
 
